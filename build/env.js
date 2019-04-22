@@ -1,16 +1,15 @@
-const env = {port:3100};
+const env = {}
 exports.env = () => {
     if(!env.feature){
         process.argv.slice(2).forEach((arg) => {
-            let argArr = arg.split('=');
-            if(argArr[0] === 'feature'){
-                env.feature = argArr[1];
-                console.log(`feature:${env.feature}`)
-            }else if(argArr[0] === 'port'){
-                env.port = argArr[1];
-                console.log(`port:${env.port}`)
+            const customArg = arg.match(/--env\.(\w+)=(\w+)/);
+            if(customArg && customArg[0]){
+                const param = customArg[1];
+                const value = customArg[2];
+                env[param] = value;
             }
         });
+        console.log(env);
     }
     return env;
 }

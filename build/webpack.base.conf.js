@@ -6,12 +6,16 @@ const vueLoaderConfig = require('./vue-loader.conf')
 const {env} = require('./env');
 
 const { feature, port } = env();
-// overwrite port
-process.env.PORT = port;
 
 if(!feature){
-  console.log('feature 不能为空，请设置feature');
+  console.error('feature 不能为空，请设置feature');
   process.exit(1);
+}else{
+  console.info(`build ${feature} start...`);
+}
+// overwrite port
+if(port){
+  process.env.PORT = port;
 }
 
 function resolve (dir) {
