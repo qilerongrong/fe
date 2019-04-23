@@ -12,10 +12,10 @@ const mutations = {
 }
 
 export default {
-    state,
-    actions,
-    mutations,
-    modules:[
-        hello
-    ]
+  state,
+  actions,
+  mutations,
+  modules: [
+    hello
+  ]
 }

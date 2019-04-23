@@ -11,7 +11,7 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 const {env} = require('./env');
 const {feature} = env();
-
+console.log('feature',feature);
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -56,7 +56,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // https://github.com/ampedandwired/html-webpack-plugin
     new HtmlWebpackPlugin({
       filename: 'index.html',
-      template: `${feature}/index.html`,
+      template: path.resolve(__dirname, `../src/${feature}/index.html`),
       inject: true
     }),
     // copy custom static assets
